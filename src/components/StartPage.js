@@ -13,11 +13,11 @@ const StartPage = () => {
   return (
     <div className="start-page">
       <header className="header-start">
-      <h1>Who are you?</h1>
+      <h1><i>"Every Promise in the Book in Mine!"</i></h1>
       </header>
       <main>
       <div className="user-button-div">
-        <button onClick={() => selectUser("Shu")} className="user-button">
+        {/* <button onClick={() => selectUser("Shu")} className="user-button">
           Shiny
         </button>
         <button onClick={() => selectUser("Sam")} className="user-button">
@@ -25,6 +25,9 @@ const StartPage = () => {
         </button>
         <button onClick={() => selectUser("Praisy")} className="user-button">
           Praisy
+        </button> */}
+        <button onClick={() => selectUser("user")} className="user-button">
+          View Verse
         </button>
       </div>
       </main>
