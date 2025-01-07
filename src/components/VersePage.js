@@ -49,7 +49,7 @@ const VersePage = () => {
   return (
     <div className="verse-page">
       <header className="header-main">
-        <h1>{user}'s verse for Today</h1>
+        <h1>Your verse for Today</h1>
       </header>
       <main>
         {verse ? (
