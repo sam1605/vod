@@ -17,24 +17,33 @@ body {
 }
 .user-button-div{
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f5f5f5; /* Optional: Set a background color */
 }
 .user-button {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
+  width: 150px; /* Button size */
+  height: 150px;
+  border-radius: 50%; /* Makes it round */
+  background-color: #4caf50; /* Green background */
   color: white;
-  background: #6a5acd;
+  font-size: 1.5rem; /* Increase font size */
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .user-button:hover {
-  background: #5848c2;
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
-
+.user-button:active {
+  transform: scale(0.95); /* Shrinks slightly when clicked */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Dimmed shadow on click */
+}
 .verse-container {
   margin: 20px auto;
   background: #fff;
