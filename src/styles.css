@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+}
+
+.start-page, .verse-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.header-main {
+  background: #6a5acd;
+  color: white;
+  padding: 20px 0;
+}
+.user-button-div{
+  display: flex;
+  flex-direction: column;
+}
+.user-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: white;
+  background: #6a5acd;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-button:hover {
+  background: #5848c2;
+}
+
+.verse-container {
+  margin: 20px auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.verse-text {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.verse-reference {
+  font-size: 1rem;
+  color: #555;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #777;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* background-color: red;
+  color: white; */
+  text-align: center;
+}
+
+.go-back-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background: #ff6347;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.go-back-button:hover {
+  background: #ff4500;
+}
