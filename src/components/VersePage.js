@@ -24,7 +24,7 @@ const VersePage = () => {
     if (storedDate === today && storedVerse) {
       setVerse(JSON.parse(storedVerse));
     } else {
-      localStorage.clear();
+      // localStorage.clear();
       fetchVerse(today);
     }
   }, [user]);

@@ -18,10 +18,13 @@ const StartPage = () => {
       <main>
       <div className="user-button-div">
         <button onClick={() => selectUser("Shu")} className="user-button">
-          Allu Shiny Shulamite
+          Shiny
         </button>
         <button onClick={() => selectUser("Sam")} className="user-button">
-          Sam Aditya
+          Sam 
+        </button>
+        <button onClick={() => selectUser("Praisy")} className="user-button">
+          Praisy
         </button>
       </div>
       </main>
