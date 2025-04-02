@@ -17,15 +17,6 @@ const StartPage = () => {
       </header>
       <main>
       <div className="user-button-div">
-        {/* <button onClick={() => selectUser("Shu")} className="user-button">
-          Shiny
-        </button>
-        <button onClick={() => selectUser("Sam")} className="user-button">
-          Sam 
-        </button>
-        <button onClick={() => selectUser("Praisy")} className="user-button">
-          Praisy
-        </button> */}
         <button onClick={() => selectUser("user")} className="user-button">
           View Verse
         </button>
