@@ -5,6 +5,8 @@ import "../styles.css";
 
 const VersePage = () => {
   const [verse, setVerse] = useState(null);
+  const [reference, setReference] = useState(null);
+  const [id, setId] = useState(null);
   const navigate = useNavigate();
   const user = localStorage.getItem("selectedUser");
 
@@ -17,12 +19,14 @@ const VersePage = () => {
     const today = new Date().toISOString().split("T")[0];
     const storedDate = localStorage.getItem(`${user}-verseDate`);
     const storedVerse = localStorage.getItem(`${user}-verse`);
+    const storedReference = localStorage.getItem(`${user}-reference`);
     const dummyDate = '01-01-0001'
 
     // fetchVerse(new Date().toISOString().split("T")[0])
 
-    if (storedDate === today && storedVerse) {
+    if (storedDate === today && storedVerse&&storedVerse!=='undefined') {
       setVerse(JSON.parse(storedVerse));
+      setReference(JSON.parse(storedReference));
     } else {
       // localStorage.clear();
       fetchVerse(today);
@@ -31,11 +35,14 @@ const VersePage = () => {
 
   const fetchVerse = async (today) => {
     try {
-      const response = await axios.get("https://bible-api.com/data/kjv/random");debugger
+      const response = await axios.get("https://blushing-clownfish-sierramike-82a6e4dd.koyeb.app/api/Verses/random");debugger
       const newVerse = response.data;
-      setVerse(newVerse.random_verse);
+      setVerse(newVerse.verse);
+      setReference(newVerse.reference);
+      setId(newVerse.id);
       localStorage.setItem(`${user}-verseDate`, today);
-      localStorage.setItem(`${user}-verse`, JSON.stringify(newVerse.random_verse));
+      localStorage.setItem(`${user}-verse`, JSON.stringify(newVerse.verse));
+      localStorage.setItem(`${user}-reference`, JSON.stringify(newVerse.reference));
     } catch (error) {
       console.error("Error fetching verse:", error);
     }
@@ -54,8 +61,8 @@ const VersePage = () => {
       <main>
         {verse ? (
           <div className="verse-container">
-            <p className="verse-text">"{verse.text}"</p>
-            <p className="verse-reference">{verse.book} {verse.chapter}:{verse.verse}</p>
+            <p className="verse-text">"{verse}"</p>
+            <p className="verse-reference">{reference}</p>
           </div>
         ) : (
           <p>Loading...</p>
