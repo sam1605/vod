@@ -28,7 +28,7 @@ const VersePage = () => {
       setVerse(JSON.parse(storedVerse));
       setReference(JSON.parse(storedReference));
     } else {
-      // localStorage.clear();
+      localStorage.clear();
       fetchVerse(today);
     }
   }, [user]);
