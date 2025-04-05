@@ -52,23 +52,27 @@ const VersePage = () => {
       setId(newVerse.id);
       setBook(newVerse.book.toLowerCase());
       setChapter(newVerse.chapter);
-      setVerseNum(newVerse.verseNum);
+      setVerseNum(newVerse.verseEndNum=='0'?newVerse.verseNum:newVerse.verseEndNum);
       localStorage.setItem(`${user}-verseDate`, today);
       localStorage.setItem(`${user}-verse`, JSON.stringify(newVerse.verse));
       localStorage.setItem(`${user}-reference`, JSON.stringify(newVerse.reference));
       localStorage.setItem(`${user}-book`, JSON.stringify(newVerse.book));
       localStorage.setItem(`${user}-chapter`, JSON.stringify(newVerse.chapter));
-      localStorage.setItem(`${user}-verseNum`, JSON.stringify(newVerse.verseNum));
+      localStorage.setItem(`${user}-verseNum`, JSON.stringify(newVerse.verseEndNum=='0'?newVerse.verseNum:newVerse.verseEndNum));
     } catch (error) {
+      localStorage.clear();
       console.error("Error fetching verse:", error);
     }
   };
   const fetchTranslation = async (tBook,tChapter,tVerse,translation) => {
     try {
-      const response = await axios.get(`https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-${translation}/books/${tBook}/chapters/${tChapter}/verses/${tVerse}.json`);debugger
+      //const response = await axios.get(`https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-${translation}/books/${tBook}/chapters/${tChapter}/verses/${tVerse}.json`);debugger
+      const response = await axios.get(`https://bible-api.com/${tBook}${tChapter}:${tVerse}?translation=${translation}`);
       const newVerse = response.data;
       setVerse(newVerse.text);
+      setTranslation(translation);
     } catch (error) {
+      localStorage.clear();
       console.error("Error fetching Translation:", error);
     }
   };
@@ -94,16 +98,16 @@ const VersePage = () => {
           <p>Loading...</p>
         )}
         <div className="translation-div">
-        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"kjv");setTranslation("KJV")}} id="en-kjv" className="translation-button">
+        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"kjv")}} id="en-kjv" className="translation-button">
           KJV
         </button>
-        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"asv");setTranslation("ASV")}} id="en-asv" className="translation-button">
+        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"asv")}} id="en-asv" className="translation-button">
           ASV
         </button>
-        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"lsv");setTranslation("LSV")}} id="en-lsv" className="translation-button">
-          LSV
+        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"webbe")}} id="en-lsv" className="translation-button">
+          WEB-BE
         </button>
-        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"webus");setTranslation("WEB")}} id="en-webus" className="translation-button">
+        <button onClick={()=>{fetchTranslation(book,chapter,verseNum,"web")}} id="en-webus" className="translation-button">
           WEB
         </button>
         </div>
