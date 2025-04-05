@@ -2,27 +2,21 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.css";
 import Swal from 'sweetalert2'
+import {FaRedo } from "react-icons/fa"
 
 
 
 const StartPage = () => {
   const navigate = useNavigate();
-  const [holdTimer, setHoldTimer] = useState(null);
-  // or via CommonJS
   const Swal = require('sweetalert2')
   const selectUser = (user) => {
     localStorage.setItem("selectedUser", user);
     navigate("/verse");
   };
 
-  const setUser = (user) => {
-    console.log(`User set to: ${user}`);
-    selectUser("user");
-    // Add any additional logic for short press here
-  };
-
-  const handleMouseDown = () => {
-    const timer = setTimeout(() => {
+  const handleReset = () => {
+    console.log("Reset icon clicked!");
+    // Show SweetAlert2 confirmation dialog
       Swal.fire({
         title: "Do you want to clear Data ?",
         text: "(Don't do it if you don't like the verse, God doesn't work that way)!",
@@ -48,18 +42,6 @@ const StartPage = () => {
           Swal.close();
         }
       });
-    }, 5000);
-    setHoldTimer(timer);
-  };
-
-  const handleMouseUp = () => {
-    clearTimeout(holdTimer);
-    // Keep the short press functionality as is
-    setUser("shortPressUser");
-  };
-
-  const handleMouseLeave = () => {
-    clearTimeout(holdTimer);
   };
 
   return (
@@ -70,15 +52,17 @@ const StartPage = () => {
       <main>
         <div className="user-button-div">
           <button
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseLeave}
+            onClick={() => selectUser("user")}
             className="user-button"
           >
             View Verse
           </button>
+          <button className="reset-button" onClick={handleReset}>
+          <FaRedo  />
+          </button>
         </div>
       </main>
+      
       <footer>
         <p>© 2025 Verse of the Day App</p>
       </footer>
