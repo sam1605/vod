@@ -34,7 +34,7 @@ const VersePage = () => {
     if (storedDate === today && storedVerse&&storedVerse!=='undefined') {
       setVerse(JSON.parse(storedVerse));
       setReference(JSON.parse(storedReference));
-      setBook(JSON.parse(storedBook));
+      setBook(JSON.parse(storedBook.toLowerCase()));
       setChapter(JSON.parse(storedChapter));
       setVerseNum(JSON.parse(storedVerseNum));
     } else {
@@ -50,7 +50,7 @@ const VersePage = () => {
       setVerse(newVerse.verse);
       setReference(newVerse.reference);
       setId(newVerse.id);
-      setBook(newVerse.book);
+      setBook(newVerse.book.toLowerCase());
       setChapter(newVerse.chapter);
       setVerseNum(newVerse.verseNum);
       localStorage.setItem(`${user}-verseDate`, today);
@@ -88,7 +88,7 @@ const VersePage = () => {
           <div className="verse-container">
             <p className="verse-text">"{verse}"</p>
             <p className="verse-reference">{reference}</p>
-            <p className="translation">{translation}</p>
+            <p className="translation">{`[${translation}]`}</p>
           </div>
         ) : (
           <p>Loading...</p>
