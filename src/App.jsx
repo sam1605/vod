@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import StartPage from "./components/StartPage";
 import VersePage from "./components/VersePage";
-import "./styles.css";
+import "./app.css";
+import "./index.css";
 
 const App = () => {
   return (
